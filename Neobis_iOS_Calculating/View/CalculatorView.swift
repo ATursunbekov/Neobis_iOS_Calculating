@@ -14,7 +14,7 @@ class CalculatorView: UIView {
         label.font = UIFont.systemFont(ofSize: 65)
         label.textColor = .white
         label.textAlignment = .right
-        label.text = "555 555 555 555"
+        label.text = "0"
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
         return label
@@ -37,6 +37,7 @@ class CalculatorView: UIView {
         button.setTitle("+/-", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        button.tag = 1
         return button
     }()
     lazy var percentageButton: UIButton = {
@@ -46,6 +47,7 @@ class CalculatorView: UIView {
         button.setTitle("%", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        button.tag = 2
         return button
     }()
     lazy var divideButton: UIButton = {
@@ -55,6 +57,7 @@ class CalculatorView: UIView {
         button.setTitle("÷", for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 7, right: 0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 45)
+        button.tag = 3
         return button
     }()
     
@@ -66,6 +69,7 @@ class CalculatorView: UIView {
         button.setTitle("7", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        button.tag = 7
         return button
     }()
     lazy var button8: UIButton = {
@@ -75,6 +79,7 @@ class CalculatorView: UIView {
         button.setTitle("8", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        button.tag = 8
         return button
     }()
     lazy var button9: UIButton = {
@@ -84,6 +89,7 @@ class CalculatorView: UIView {
         button.setTitle("9", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        button.tag = 9
         return button
     }()
     lazy var multiplyButton: UIButton = {
@@ -93,6 +99,7 @@ class CalculatorView: UIView {
         button.setTitle("×", for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 7, right: 0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 45)
+        button.tag = 4
         return button
     }()
     
@@ -104,6 +111,7 @@ class CalculatorView: UIView {
         button.setTitle("4", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        button.tag = 4
         return button
     }()
     lazy var button5: UIButton = {
@@ -113,6 +121,7 @@ class CalculatorView: UIView {
         button.setTitle("5", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        button.tag = 5
         return button
     }()
     lazy var button6: UIButton = {
@@ -122,6 +131,7 @@ class CalculatorView: UIView {
         button.setTitle("6", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        button.tag = 6
         return button
     }()
     
@@ -132,6 +142,7 @@ class CalculatorView: UIView {
         button.setTitle("-", for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 7, right: 0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 45)
+        button.tag = 5
         return button
     }()
     
@@ -140,27 +151,30 @@ class CalculatorView: UIView {
         let button = UIButton()
         button.backgroundColor = UIColor(hex: "#333333")
         button.layer.cornerRadius = DynamicW(40)
-        button.setTitle("4", for: .normal)
+        button.setTitle("1", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        button.tag = 1
         return button
     }()
     lazy var button2: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(hex: "#333333")
         button.layer.cornerRadius = DynamicW(40)
-        button.setTitle("5", for: .normal)
+        button.setTitle("2", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        button.tag = 2
         return button
     }()
     lazy var button3: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(hex: "#333333")
         button.layer.cornerRadius = DynamicW(40)
-        button.setTitle("6", for: .normal)
+        button.setTitle("3", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        button.tag = 3
         return button
     }()
     lazy var plusButton: UIButton = {
@@ -170,6 +184,7 @@ class CalculatorView: UIView {
         button.setTitle("+", for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 7, right: 0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 50)
+        button.tag = 6
         return button
     }()
     
@@ -184,6 +199,7 @@ class CalculatorView: UIView {
         button.titleLabel?.textAlignment = .left
         button.contentHorizontalAlignment = .leading
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: DynamicW(30), bottom: 0, right: 0)
+        button.tag = 0
         return button
     }()
     
@@ -191,9 +207,10 @@ class CalculatorView: UIView {
         let button = UIButton()
         button.backgroundColor = UIColor(hex: "#333333")
         button.layer.cornerRadius = DynamicW(40)
-        button.setTitle(".", for: .normal)
+        button.setTitle(",", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+        button.tag = 7
         return button
     }()
     
@@ -204,6 +221,7 @@ class CalculatorView: UIView {
         button.setTitle("=", for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 7, right: 0)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 50)
+        button.tag = 8
         return button
     }()
     
