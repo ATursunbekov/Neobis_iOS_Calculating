@@ -9,10 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let calculatorView = CalculatorView(frame: UIScreen.main.bounds)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let calculatorView = CalculatorView(frame: UIScreen.main.bounds)
-        
         view.addSubview(calculatorView)
     }
 }
