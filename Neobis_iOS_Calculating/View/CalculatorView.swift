@@ -28,6 +28,7 @@ class CalculatorView: UIView {
         button.setTitle("C", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        
         return button
     }()
     lazy var negativeButton: UIButton = {

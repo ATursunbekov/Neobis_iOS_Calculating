@@ -88,30 +88,43 @@ class ViewController: UIViewController {
             } else if tag == 7 {
                 calculatorView.number.text = calculatorView.number.text?.appending(",")
             } else {
-
-                if firstNumber == 0 {
-                    firstNumber = value
-                    operationPressed = true
+                
+                if operationPressed {
+                    operationPressed = false
+                    changeOperationButton()
+                    equalShouldBePressed = false
+                }
+                
+                if equalShouldBePressed {
+                    equalPressed()
                 }
                 
                 switch tag {
                 case 3:
                     currentOperation = .divide
+                    firstNumber = value
+                    operationPressed = true
                     changeOperationButton()
                     equalShouldBePressed = true
                     break
                 case 4:
                     currentOperation = .multiply
+                    firstNumber = value
+                    operationPressed = true
                     changeOperationButton()
                     equalShouldBePressed = true
                     break
                 case 5:
                     currentOperation = .subtract
+                    firstNumber = value
+                    operationPressed = true
                     changeOperationButton()
                     equalShouldBePressed = true
                     break
                 case 6:
                     currentOperation = .add
+                    firstNumber = value
+                    operationPressed = true
                     changeOperationButton()
                     equalShouldBePressed = true
                     break
@@ -128,6 +141,7 @@ class ViewController: UIViewController {
     }
     
     func equalPressed() {
+        if !equalShouldBePressed {return}
         equalShouldBePressed = false
         if let operation = currentOperation {
             var secondNumber = 0.0
@@ -139,17 +153,17 @@ class ViewController: UIViewController {
             case .add:
                 let result = firstNumber + secondNumber
                 calculatorView.number.text = removeTrailingZeros(from: result)
-                firstNumber = 0
+                firstNumber = result
                 break
             case .subtract:
                 let result = firstNumber - secondNumber
                 calculatorView.number.text = removeTrailingZeros(from: result)
-                firstNumber = 0
+                firstNumber = result
                 break
             case .multiply:
                 let result = firstNumber * secondNumber
                 calculatorView.number.text = removeTrailingZeros(from: result)
-                firstNumber = 0
+                firstNumber = result
                 break
             case .divide:
                 if secondNumber == 0 {
@@ -159,7 +173,7 @@ class ViewController: UIViewController {
                 }
                 let result = firstNumber / secondNumber
                 calculatorView.number.text = removeTrailingZeros(from: result)
-                firstNumber = 0
+                firstNumber = result
                 break
             default:
                 break
@@ -170,8 +184,7 @@ class ViewController: UIViewController {
     func removeTrailingZeros(from number: Double) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.minimumFractionDigits = 0
-        numberFormatter.maximumFractionDigits = 16 // Set an appropriate maximum value based on your use case
-        
+        numberFormatter.maximumFractionDigits = 5
         if let formattedString = numberFormatter.string(from: NSNumber(value: number)) {
             return formattedString
         } else {
